@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById("root")
+
+    const pokeURL = "https://pokeapi.co/api/v2/pokemon/?limit=30"
+    const testArr = []
+    async function pokemon() {
+      const res = await fetch(pokeURL)
+      const results = res.json()
+      return results.then((value) => {
+        for (let key of value) {
+          testArr.push(key)
+        }
+      })
+
+    }
+    // 도저히 안된다...
+    // 어떻게 하신거지?
+    pokemon()
+    // .then(() => {
+    //   console.log(testArr)
+    //   testArr.forEach((item) => {
+    //     root.innerHTML += `<div>${item}</div>`
+    //   })
+    // }
+    // )
+  </script>
+</body>
+
+</html>
